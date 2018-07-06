@@ -1,3 +1,1 @@
-/*
-Put your code there
-*/
+addItemInventory(3,3,3);
