@@ -26,6 +26,9 @@ function print(context){
     alert(context);
 }
 function addItemInventory(id,number,specialdata) {
-        package.
+    for(var a = 0; a < number ; a++){    
+    package.set(package.size,new things(id));
+        }
 }
-alert (free);
+addItemInventory(9,9,9)
+alert (package.size);
