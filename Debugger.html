@@ -1,14 +1,43 @@
-<!DOCTYPE <!DOCTYPE html>
-<html>
+<!DOCTYPE html>
+<html style="background:lightcyan">
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>ModPE Debug</title>
+    <link rel="stylesheet" href="./mdl/material.min.css">   
+    <script src="/ModPE/mdl/material.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" />
-    <script src="PCRunner.js"></script>
-    <script src="LocalCode.js"></script>
 </head>
 <body>
+    <style>
+        div{ 
+            word-wrap: break-word; 
+            word-break: normal; 
+         }
+        .demo-card-wide.mdl-card {
+          width: 720px;
+          margin: 0 auto;
+          height: 1080px ;
+        }
+        .demo-card-wide > .mdl-card__title {
+          color: #fff;
+          height: 176px;
+          background: url('../assets/demos/welcome_card.jpg') center / cover;
+        }
+        .demo-card-wide > .mdl-card__menu {
+          color: #fff;
+        }
+        </style>
+        
+        <div class="demo-card-wide mdl-card mdl-shadow--4dp"
+        id="console"
+        style=' overflow: scroll; '>
+    
+        </div>
+
+
 </body>
+    <script src="PCRunner.js"></script>
+    <script src="LocalCode.js"></script>
 </html>
