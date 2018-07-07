@@ -34,7 +34,7 @@ CarriedItem = new things(id,Number);
 
 }
 //Ents.
-class Entity {
+class entity {
     constructor(Id){
         this.id = Id;
     }
@@ -48,6 +48,7 @@ class Entity {
         alert("已经添加披风");
     }
 }
+var Entity = new entity(null);
 //Player.
 class player{
 constructor(Id,Health,Hunger,X,Y,Z,Riding,CanFly,Name){
@@ -102,7 +103,7 @@ this.health = 血量;
 
 }
 }
-var Player = new player(63,20,20,0,0,0,new Entity(null),false,"Van");
+var Player = new player(63,20,20,0,0,0,new entity(null),false,"Van");
 //Ids.
 const Podzol = 243;
 const TNT = 46;

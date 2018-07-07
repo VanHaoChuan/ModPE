@@ -1,1 +1,1 @@
-ModPE.setFoodItem(9,"C:\Users\Fanhaochuan\Documents\编程\ModPE.jpg",9,9,"r3qe",9)
+print(true=false);
