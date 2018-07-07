@@ -10,8 +10,9 @@ Copyright (c) 2018 wdsjhehe在路上 All rights reserved.
 */
 //Package control.
 class things{
-    constructor(Id){
+    constructor(Id,Number){
         this.id = Id;
+        this.number = Number;
     }
 }
 
@@ -27,9 +28,9 @@ package.delete(100);
 var CarriedItem;
 
 //Debugger.
-function SetCarriedItem(id){
+function SetCarriedItem(id,Number){
 
-CarriedItem = new things(id);
+CarriedItem = new things(id,Number);
 
 }
 //Ents.
@@ -39,7 +40,7 @@ class Ent {
     }
 }
 //Player.
-class Player{
+class player{
 constructor(Id,Health,Hunger,X,Y,Z,Riding,CanFly){
     this.id = Id;
     this.health = Health;
@@ -69,8 +70,25 @@ getPointedBlockSide(){
 return "玩家所指方块面";
 }
 
+addItemCreativeInv(Id,number,specialdata){
+
+    alert("已添加"+"Id"+Id+"数量"+number+"特殊值"+specialdata+"到创造模式背包");
 }
-var player = new Player(63,20,20,0,0,0,new Ent(null),false);
+
+clearinventorySlot(格数){
+alert("已清除"+格数+"格物品");
+}
+getCarriedItme(){
+
+    return CarriedItem.id;
+}
+getCarriedItmeCount(){
+    return CarriedItem.number;
+}
+
+
+}
+var Player = new player(63,20,20,0,0,0,new Ent(null),false);
 //Ids.
 const Podzol = 243;
 const TNT = 46;
@@ -154,13 +172,13 @@ class modPE{
         alert("已在控制台打印");
     }
      setFoodItem(Id,材质位置,排列值,补充饥饿值,名字,堆叠数量) {
-        alert("已创建"+"Id"+Id+"材质位置"+材质位置+"排列值"+排列值+"补充饥饿值"+补充饥饿值+"名字"+名字+"堆叠数量"+堆叠数量);
+        alert("已设置"+"Id"+Id+"材质位置"+材质位置+"排列值"+排列值+"补充饥饿值"+补充饥饿值+"名字"+名字+"堆叠数量"+堆叠数量);
     }
     setGameSpeed(帧数){
         alert("已限制帧数"+帧数);
     }
     setItem(Id,材质位置,排列值,名字,堆叠数量){
-        alert("已创建"+"Id"+Id+"材质位置"+材质位置+"排列值"+排列值+"名字"+名字+"堆叠数量"+堆叠数量);
+        alert("已设置"+"Id"+Id+"材质位置"+材质位置+"排列值"+排列值+"名字"+名字+"堆叠数量"+堆叠数量);
     }
     takeScreenshot(路径){
         alert("已截图");
