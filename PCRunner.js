@@ -111,7 +111,7 @@ const 下界反应堆 = 247;
 //Definded functions.
 function print(context){
     var div = document.getElementById("console");
-    var p = document.createElement('div');//创建p节点
+    var p = document.createElement('div');
         p.innerHTML = context;
         p.setAttribute("class","demo-card-wide mdl-card mdl-shadow--4dp");
         div.appendChild(p);
@@ -215,7 +215,29 @@ class level{
 }
 class item {
     setHandEquipped(工具Id,是否立体){
+            if(是否立体){
+                    print("物品已立体");
+            }
+            else{
+                print("物品已不立体");
+            }
+    }
+    addCraftRecipe(Id,数量,specialdata,合成公式){
+        print("已设置"+合成公式);
+    }
+    addFurnaceRecipe(Id,Id,specialdata){
+        print("已设置");
+    }
+    setMaxDamage(Id,损坏值){
+        print("物品损坏值"+损毁值);
+    }
+    addShapedRecipe(输出Id,number,specialdata,合成表,合成表对应物品Id_Data)
+    {
+        print("合成表已添加"+合成表);
 
-        
+    }
+    defineArmor(Id,盔甲材质名,盔甲材质偏移值_一般填零,盔甲名,盔甲材质,防御力,耐久度,盔甲类型){
+        print(盔甲名+"已添加");
     }
 }
+var Item = new item();
