@@ -1,7 +1,36 @@
 /*
 Only use it to test your ModPE
 */
+//Minecraft
+class modPE{
 
+    getMinecraftVersion() {
+        return "1.2alpha";
+    }
+     leaveGame() {
+        window.close();
+    }
+     log(Log){
+        console.log(Log);
+        alert("已在控制台打印");
+    }
+     setFoodItem(Id,材质位置,排列值,补充饥饿值,名字,堆叠数量) {
+        alert("已创建"+"Id"+Id+"材质位置"+材质位置+"排列值"+排列值+"补充饥饿值"+补充饥饿值+"名字"+名字+"堆叠数量"+堆叠数量);
+    }
+    setGameSpeed(帧数){
+        alert("已限制帧数"+帧数);
+    }
+    setItem(Id,材质位置,排列值,名字,堆叠数量){
+        alert("已创建"+"Id"+Id+"材质位置"+材质位置+"排列值"+排列值+"名字"+名字+"堆叠数量"+堆叠数量);
+    }
+    takeScreenshot(路径){
+        alert("已截图");
+    }
+    showTipMessage(文字){
+        document.writeln(文字)
+    }
+}
+var ModPE = new modPE();
 //Package control.
 class things{
     constructor(Id){
@@ -50,16 +79,6 @@ var player = new Player(63,20,20,0,0,0,new Ent(null));
 const Podzol = 243;
 const TNT = 46;
 const 下界反应堆 = 247;
-//Time.
-var d_n_b = true;
-var d_n;
-window.setInterval(function(){d_n_b = !d_n_b},1);
-if(d_n_b){
-    d_n = "白日";
-}
-else{
-    d_n = "黑夜";
-}
 //Definded functions.
 function print(context){
     alert(context);
@@ -102,7 +121,26 @@ function preventDefault() {
 function rideAnimal(实体1,实体2) {
     alert("已将"+实体1+"骑上"+实体2);
 }
-function name(params) {
-    
+function setNightMode(Yes_or_No) {
+    if(Yes_or_No){
+        alert("开启晚上模式");
+    }
+    else{
+        return false;
+    }
 }
-document.write(d_n);
+function setPosition(实体,X,Y,Z){
+    alert ("已将实体传送至"+"X:"+X+"Y:"+Y+"Z:"+Z);
+}
+function setPositionRelative(实体,X,Y,Z) {
+    alert ("已将实体传送至相对于你的"+"X:"+X+"Y:"+Y+"Z:"+Z);
+}
+function setVelX(实体,距离_格) {
+    alert ("已将实体沿X传送"+距离_格+"格");
+}
+function setVelY(实体,距离_格) {
+    alert ("已将实体沿y传送"+距离_格+"格");
+}
+function setVelZ(实体,距离_格) {
+    alert ("已将实体沿Z传送"+距离_格+"格");
+}
