@@ -34,14 +34,23 @@ CarriedItem = new things(id,Number);
 
 }
 //Ents.
-class Ent {
+class Entity {
     constructor(Id){
         this.id = Id;
+    }
+    addEffect(实体,药水ID,时间,等级,有无阴影){
+        alert("给予"+实体+药水ID+"效果"+时间+"秒"+等级+"级"+有无阴影+"阴影"+"效果");
+    }
+    removeEffect(实体,药水ID){
+        alert("移除"+实体+药水ID+"效果");
+    }
+    setCape(实体,披风路径){
+        alert("已经添加披风");
     }
 }
 //Player.
 class player{
-constructor(Id,Health,Hunger,X,Y,Z,Riding,CanFly){
+constructor(Id,Health,Hunger,X,Y,Z,Riding,CanFly,Name){
     this.id = Id;
     this.health = Health;
     this.hunger = Hunger;
@@ -50,7 +59,7 @@ constructor(Id,Health,Hunger,X,Y,Z,Riding,CanFly){
     this.z = Z;
     this.riding = Riding;
     this.canFly = CanFly;
-
+    this.name = Name;
 }
 
 //functions
@@ -85,10 +94,15 @@ getCarriedItme(){
 getCarriedItmeCount(){
     return CarriedItem.number;
 }
-
+getName(实体){
+        return this.name;
+}
+setHealth(血量){
+this.health = 血量;
 
 }
-var Player = new player(63,20,20,0,0,0,new Ent(null),false);
+}
+var Player = new player(63,20,20,0,0,0,new Entity(null),false,"Van");
 //Ids.
 const Podzol = 243;
 const TNT = 46;
@@ -193,7 +207,4 @@ class level{
     setGrass(X,Y,颜色_字符串_16进制){
             alert("已将位于"+X+","+Y+"的草涂成"+颜色_字符串_16进制);
     }
-
-
-
 }

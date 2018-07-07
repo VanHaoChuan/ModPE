@@ -1,2 +1,1 @@
-print(ModPE.getMinecraftVersion());
-Player.addItemCreativeInv(566,6,0);
+ModPE.setFoodItem(9,"C:\Users\Fanhaochuan\Documents\编程\ModPE.jpg",9,9,"r3qe",9)
