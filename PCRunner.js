@@ -111,8 +111,9 @@ const 下界反应堆 = 247;
 //Definded functions.
 function print(context){
     var div = document.getElementById("console");
-    var p = document.createElement('p');//创建p节点
+    var p = document.createElement('div');//创建p节点
         p.innerHTML = context;
+        p.setAttribute("class","demo-card-wide mdl-card mdl-shadow--4dp");
         div.appendChild(p);
 }
 function addItemInventory(id,number,specialdata) {
