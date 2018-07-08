@@ -9,8 +9,8 @@ thanks for 初始状态0.
 Copyright (c) 2018 wdsjhehe在路上 All rights reserved.
 */
 //Package control.
-class things{
-    constructor(Id,Number){
+class things {
+    constructor(Id, Number) {
         this.id = Id;
         this.number = Number;
     }
@@ -21,223 +21,270 @@ var package = new Map();
 var free = 99 - package.size;
 
 if (free < 0) {
-print("背包满了!");
-package.delete(100);
+    print("背包满了!");
+    package.delete(100);
 }
 
 var CarriedItem;
 
 //Debugger.
-function SetCarriedItem(id,Number){
+function SetCarriedItem(id, Number) {
+    CarriedItem = new things(id, Number);}
 
-CarriedItem = new things(id,Number);
+function clickBlocks(X, Y, Z, 物品Id, 方块Id, 方向, 手中物品伤害, 方块伤害) {
+    useItem(X, Y, Z, 物品Id, 方块Id, 方向, 手中物品伤害, 方块伤害);
+}
 
+function attackEntiy(攻击者, 被攻击者) {
+    attackHook(攻击者, 被攻击者);
+}
+//modTick.
+function tick(){
+window.setInterval(modTick, 0.05);
+}
+function sendMessage(Message) {
+    procCmd(Message);
+}
+function openLevel() {
+    newLevel();
+}
+function closeLevel() {
+    leaveGame();
+}
+function addEntity(实体) {
+    entityAddedHook(实体);
+}
+function removeEntity(实体) {
+    entityRemovedHook(实体);
+}
+function killEntity(实体) {
+    deathHook(实体);
+}
+function breakBlocks(X,Y,Z,方向) {
+    destroyBlock(X,Y,Z,方向);
+}
+function chat(信息) {
+    chatHook(信息);
 }
 //Ents.
 class entity {
-    constructor(Id){
+    constructor(Id) {
         this.id = Id;
     }
-    addEffect(实体,药水ID,时间,等级,有无阴影){
-        print("给予"+实体+药水ID+"效果"+时间+"秒"+等级+"级"+有无阴影+"阴影"+"效果");
+    addEffect(实体, 药水ID, 时间, 等级, 有无阴影) {
+        print("给予" + 实体 + 药水ID + "效果" + 时间 + "秒" + 等级 + "级" + 有无阴影 + "阴影" + "效果");
     }
-    removeEffect(实体,药水ID){
-        print("移除"+实体+药水ID+"效果");
+    removeEffect(实体, 药水ID) {
+        print("移除" + 实体 + 药水ID + "效果");
     }
-    setCape(实体,披风路径){
+    setCape(实体, 披风路径) {
         print("已经添加披风");
     }
 }
 var Entity = new entity(null);
 //Player.
-class player{
-constructor(Id,Health,Hunger,X,Y,Z,Riding,CanFly,Name){
-    this.id = Id;
-    this.health = Health;
-    this.hunger = Hunger;
-    this.x = X;
-    this.y = Y;
-    this.z = Z;
-    this.riding = Riding;
-    this.canFly = CanFly;
-    this.name = Name;
-}
+class player {
+    constructor(Id, Health, Hunger, X, Y, Z, Riding, CanFly, Name) {
+        this.id = Id;
+        this.health = Health;
+        this.hunger = Hunger;
+        this.x = X;
+        this.y = Y;
+        this.z = Z;
+        this.riding = Riding;
+        this.canFly = CanFly;
+        this.name = Name;
+    }
 
-//functions
-canFly(){
-    return this.canFly;
-}
-isFly(){
-return false;
-}
-setCanFly(可否){
-this.canFly = 可否;
-}
-getPointedBlockId(){
-return "玩家所指方块ID";
-}
-getPointedBlockSide(){
-return "玩家所指方块面";
-}
+    //functions
+    canFly() {
+        return this.canFly;
+    }
+    isFly() {
+        return false;
+    }
+    setCanFly(可否) {
+        this.canFly = 可否;
+    }
+    getPointedBlockId() {
+        return "玩家所指方块ID";
+    }
+    getPointedBlockSide() {
+        return "玩家所指方块面";
+    }
 
-addItemCreativeInv(Id,number,specialdata){
+    addItemCreativeInv(Id, number, specialdata) {
 
-    print("已添加"+"Id"+Id+"数量"+number+"特殊值"+specialdata+"到创造模式背包");
-}
+        print("已添加" + "Id" + Id + "数量" + number + "特殊值" + specialdata + "到创造模式背包");
+    }
 
-clearinventorySlot(格数){
-print("已清除"+格数+"格物品");
-}
-getCarriedItme(){
+    clearinventorySlot(格数) {
+        print("已清除" + 格数 + "格物品");
+    }
+    getCarriedItme() {
 
-    return CarriedItem.id;
-}
-getCarriedItmeCount(){
-    return CarriedItem.number;
-}
-getName(实体){
+        return CarriedItem.id;
+    }
+    getCarriedItmeCount() {
+        return CarriedItem.number;
+    }
+    getName(实体) {
         return this.name;
-}
-setHealth(血量){
-this.health = 血量;
+    }
+    setHealth(血量) {
+        this.health = 血量;
 
+    }
 }
-}
-var Player = new player(63,20,20,0,0,0,new entity(null),false,"Van");
+var Player = new player(63, 20, 20, 0, 0, 0, new entity(null), false, "Van");
 //Ids.
 const Podzol = 243;
 const TNT = 46;
 const 下界反应堆 = 247;
 //Definded functions.
-function print(context){
+function print(context) {
     var div = document.getElementById("console");
     var p = document.createElement('div');
-        p.innerHTML = context;
-        p.setAttribute("class","demo-card-wide mdl-card mdl-shadow--4dp");
-        div.appendChild(p);
+    p.innerHTML = context;
+    p.setAttribute("class", "demo-card-wide mdl-card mdl-shadow--4dp");
+    div.appendChild(p);
 }
-function addItemInventory(id,number,specialdata) {
-    for(var a = 0; a < number ; a++){    
-    package.set(package.size,new things(id));
-        }
-        print("添加成功!");
+
+function addItemInventory(id, number, specialdata) {
+    for (var a = 0; a < number; a++) {
+        package.set(package.size, new things(id));
+    }
+    print("添加成功!");
 }
+
 function clientMessage(消息) {
     print(消息);
 }
-function explode(X,Y,Z,半径) {
-    print("位于X:"+X+"Y:"+Y+"Z:"+Z+"发生半径为"+半径+"的爆炸");
+
+function explode(X, Y, Z, 半径) {
+    print("位于X:" + X + "Y:" + Y + "Z:" + Z + "发生半径为" + 半径 + "的爆炸");
 }
-function getCarriedItme(){
+
+function getCarriedItme() {
 
     return CarriedItem.id;
 
 }
-function getPlayerEnt (){
+
+function getPlayerEnt() {
     return (player.id);
 }
+
 function getPlayerX() {
     return player.x;
 }
+
 function getPlayerY() {
     return player.y;
-}           
+}
+
 function getPlayerZ() {
     return player.z;
 }
-function getTile(X,Y,Z) {
-    print ("位于X:"+X+"Y:"+Y+"Z:"+Z+"的方块的id");
+
+function getTile(X, Y, Z) {
+    print("位于X:" + X + "Y:" + Y + "Z:" + Z + "的方块的id");
 }
+
 function preventDefault() {
     print("已经阻止默认操作");
 }
-function rideAnimal(实体1,实体2) {
-    print("已将"+实体1+"骑上"+实体2);
+
+function rideAnimal(实体1, 实体2) {
+    print("已将" + 实体1 + "骑上" + 实体2);
 }
+
 function setNightMode(Yes_or_No) {
-    if(Yes_or_No){
+    if (Yes_or_No) {
         print("开启晚上模式");
-    }
-    else{
+    } else {
         return false;
     }
 }
-function setPosition(实体,X,Y,Z){
-    print ("已将实体传送至"+"X:"+X+"Y:"+Y+"Z:"+Z);
+
+function setPosition(实体, X, Y, Z) {
+    print("已将实体传送至" + "X:" + X + "Y:" + Y + "Z:" + Z);
 }
-function setPositionRelative(实体,X,Y,Z) {
-    print ("已将实体传送至相对于你的"+"X:"+X+"Y:"+Y+"Z:"+Z);
+
+function setPositionRelative(实体, X, Y, Z) {
+    print("已将实体传送至相对于你的" + "X:" + X + "Y:" + Y + "Z:" + Z);
 }
-function setVelX(实体,距离_格) {
-    print ("已将实体沿X传送"+距离_格+"格");
+
+function setVelX(实体, 距离_格) {
+    print("已将实体沿X传送" + 距离_格 + "格");
 }
-function setVelY(实体,距离_格) {
-    print ("已将实体沿y传送"+距离_格+"格");
+
+function setVelY(实体, 距离_格) {
+    print("已将实体沿y传送" + 距离_格 + "格");
 }
-function setVelZ(实体,距离_格) {
-    print ("已将实体沿Z传送"+距离_格+"格");
+
+function setVelZ(实体, 距离_格) {
+    print("已将实体沿Z传送" + 距离_格 + "格");
 }
 //Minecraft
-class modPE{
+class modPE {
 
     getMinecraftVersion() {
         return "1.2alpha";
     }
-     leaveGame() {
+    leaveGame() {
         window.close();
     }
-     log(Log){
+    log(Log) {
         console.log(Log);
         print("已在控制台打印");
     }
-     setFoodItem(Id,材质位置,排列值,补充饥饿值,名字,堆叠数量) {
-        print("已设置"+"Id"+Id+"材质位置"+材质位置+"排列值"+排列值+"补充饥饿值"+补充饥饿值+"名字"+名字+"堆叠数量"+堆叠数量);
+    setFoodItem(Id, 材质位置, 排列值, 补充饥饿值, 名字, 堆叠数量) {
+        print("已设置" + "Id" + Id + "材质位置" + 材质位置 + "排列值" + 排列值 + "补充饥饿值" + 补充饥饿值 + "名字" + 名字 + "堆叠数量" + 堆叠数量);
     }
-    setGameSpeed(帧数){
-        print("已限制帧数"+帧数);
+    setGameSpeed(帧数) {
+        print("已限制帧数" + 帧数);
     }
-    setItem(Id,材质位置,排列值,名字,堆叠数量){
-        print("已设置"+"Id"+Id+"材质位置"+材质位置+"排列值"+排列值+"名字"+名字+"堆叠数量"+堆叠数量);
+    setItem(Id, 材质位置, 排列值, 名字, 堆叠数量) {
+        print("已设置" + "Id" + Id + "材质位置" + 材质位置 + "排列值" + 排列值 + "名字" + 名字 + "堆叠数量" + 堆叠数量);
     }
-    takeScreenshot(路径){
+    takeScreenshot(路径) {
         print("已截图");
     }
-    showTipMessage(文字){
+    showTipMessage(文字) {
         println(文字);
     }
 }
 var ModPE = new modPE();
 //Level functions.
-class level{
-    setGrass(X,Y,颜色_字符串_16进制){
-            print("已将位于"+X+","+Y+"的草涂成"+颜色_字符串_16进制);
+class level {
+    setGrass(X, Y, 颜色_字符串_16进制) {
+        print("已将位于" + X + "," + Y + "的草涂成" + 颜色_字符串_16进制);
     }
 }
 class item {
-    setHandEquipped(工具Id,是否立体){
-            if(是否立体){
-                    print("物品已立体");
-            }
-            else{
-                print("物品已不立体");
-            }
+    setHandEquipped(工具Id, 是否立体) {
+        if (是否立体) {
+            print("物品已立体");
+        } else {
+            print("物品已不立体");
+        }
     }
-    addCraftRecipe(Id,数量,specialdata,合成公式){
-        print("已设置"+合成公式);
+    addCraftRecipe(Id, 数量, specialdata, 合成公式) {
+        print("已设置" + 合成公式);
     }
-    addFurnaceRecipe(Id,Id,specialdata){
+    addFurnaceRecipe(Id, id, specialdata) {
         print("已设置");
     }
-    setMaxDamage(Id,损坏值){
-        print("物品损坏值"+损毁值);
+    setMaxDamage(Id, 损坏值) {
+        print("物品损坏值" + 损毁值);
     }
-    addShapedRecipe(输出Id,number,specialdata,合成表,合成表对应物品Id_Data)
-    {
-        print("合成表已添加"+合成表);
+    addShapedRecipe(输出Id, number, specialdata, 合成表, 合成表对应物品Id_Data) {
+        print("合成表已添加" + 合成表);
 
     }
-    defineArmor(Id,盔甲材质名,盔甲材质偏移值_一般填零,盔甲名,盔甲材质,防御力,耐久度,盔甲类型){
-        print(盔甲名+"已添加");
+    defineArmor(Id, 盔甲材质名, 盔甲材质偏移值_一般填零, 盔甲名, 盔甲材质, 防御力, 耐久度, 盔甲类型) {
+        print(盔甲名 + "已添加");
     }
 }
 var Item = new item();

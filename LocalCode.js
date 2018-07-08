@@ -1,1 +1,4 @@
-print("fuckQ!");
+function newLevel() {
+ print("fawfwa");   
+}
+openLevel();

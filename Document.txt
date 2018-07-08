@@ -1,2 +1,14 @@
-为了方便测试,我写了一些特有的函数.
-SetCarriedItem----设置玩家手持物品id.
+为了方便测试钩子函数,我写了一些特有的函数.
+必须在钩子函数写完后在调用一次相应的函数.
+记得写完mmodpe后删掉这些函数.
+SetCarriedItem(id,Number)----设置玩家手持物品id.
+clickBlocks(X,Y,Z,物品Id,方块Id,方向,手中物品伤害,方块伤害)----点击方块.
+attackEntiy(攻击者,被攻击者)----攻击实体.
+sendMessage(Message)----发送以/开头的信息.(已移除).
+openLevel()----加载一个新世界.
+closeLevel()----关闭一个世界.
+addEntity(实体)----添加一个实体.
+breakBlocks(X,Y,Z,方向)----击碎方块.
+killEntity(实体)----杀死实体.
+removeEntity(实体)----移除实体.
+chat(信息)----发送信息.

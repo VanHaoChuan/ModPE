@@ -18,3 +18,4 @@ https://code.visualstudio.com/docs/?dv=win
 然后点文件图标,点开LocalCode.js,写代码.
 想运行就右键Debugger.html,在资源管理器中打开,然后在资源管理器中双击Debugger.html.
 最后编写完毕就可以改名拿走了.
+暂不支持Java,Android,最近几周可能更新.
