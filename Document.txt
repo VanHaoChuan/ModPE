@@ -12,3 +12,10 @@ breakBlocks(X,Y,Z,方向)----击碎方块.
 killEntity(实体)----杀死实体.
 removeEntity(实体)----移除实体.
 chat(信息)----发送信息.
+----------------------------------------------------------------------GUI-------------------------------------------------------------------
+Gravity = {LEFT,BOTTOM,CENTER,FILL,RIGHT,TOP}----Gravity枚举,在ModPE中替换成android.view.Gravity.
+class PopupWindow{
+    setHeight(Height)----设置高度.
+    setWidth(Width)----设置宽度.
+    setContentView(View)----设置view.
+}
